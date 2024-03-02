@@ -1,16 +1,25 @@
-export const App = () => {
-  return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
-  );
-};
+import { PureComponent } from "react";
+import { Global } from '../Global.styled'
+import { ToastContainer } from "react-toastify";
+import { PokemonForm } from "./Pokemons/PokemonForm";
+import { PokemonInfo } from "./Pokemons/PokemonInfo";
+
+export class App extends PureComponent{
+  state={
+    pokemon:''
+  }
+  
+  onNameChange=(name)=>{
+    this.setState({
+      pokemon:name
+    })  
+  }
+  render(){
+    return(
+      <>
+      <PokemonForm onNameChange={this.onNameChange}/>
+      <PokemonInfo name={this.state.pokemon}/>
+      </>
+    )
+  }
+}
